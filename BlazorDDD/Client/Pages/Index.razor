@@ -1,0 +1,51 @@
+﻿@page "/"
+
+<h1>All products</h1>
+
+<div>
+    <EditForm Model="Product" OnValidSubmit="@Saved">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div class="col-auto">
+            <label for="staticEmail2" class="visually-hidden">Name</label>
+            <input type="text" required class="form-control" @bind-value="@Product.Name">
+        </div>
+        <div class="col-auto">
+            <label for="inputPassword2" class="visually-hidden">Description</label>
+            <input type="text" class="form-control" @bind-value="@Product.Description">
+        </div>
+        <div class="col-auto">
+            <label for="inputPassword2" class="visually-hidden">Price</label>
+            <input type="text" class="form-control" @bind-value="@Product.Price">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">Save</button>
+        </div>
+    </EditForm>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (products != null && products.Count > 0)
+        {
+            @foreach (var product in products) {
+                <tr>
+                    <th scope="row">@product.ProductId</th>
+                    <td>@product.Name</td>
+                    <td>@product.Description</td>
+                    <td>@product.Price</td>
+                </tr>
+            }
+        } 
+    </tbody>
+</table>
+
+ 
